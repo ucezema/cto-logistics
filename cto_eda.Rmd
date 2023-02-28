@@ -1,0 +1,164 @@
+---
+title: "CTO Exploratory Data Analysis"
+author: "Uche Ezema"
+date: "2023-02-28"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r libraries and data, include=FALSE}
+library(tidyverse)
+
+cto <- read_csv("CTO.csv")
+
+```
+
+## CTO Logistics Data
+
+This is an exploratory data analysis of the CTO Logistics Questionnaire. Only a descriptive analysis of charts and tables are covered to provide insight for further inferential analysis. The report has been built with **R Markdown.** 
+
+
+### 1.1 Logistics Supply Chain System (LSCS) components that facilities have.
+```{r components, echo=FALSE, fig.height=8, fig.width=8, message=FALSE, warning=FALSE}
+lscs <- cto %>% 
+  select(product_selection_register:policy_document) %>% 
+  pivot_longer(cols = c(product_selection_register:policy_document)) %>% 
+  filter(!is.na(value)) %>% 
+  group_by(name) %>% 
+  summarise(Freq = sum(value)) %>% 
+  ggplot(aes(x = reorder(name, Freq), y = Freq))+
+  geom_col(stat = "identity")+
+  coord_flip()+
+  labs(title = "Distribution of LSCS components available in facilities",
+       x = "Frequency",
+       y = "LSCS component")
+lscs
+```
+
+
+### 1.2 Training status of respondents
+
+Respondents that have ever received logistics training:
+
+```{r training, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = logi_training))+
+  geom_bar(stat = "count")+
+  labs(title = "Respondents that ever received logistics training",
+       x = "Training status",
+       y = "Frequency")
+lscs
+```
+
+
+### 1.3 Different methods used by health facility respondents for selecting commodities:
+
+```{r methods, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = commodity_selection_method))+
+  geom_bar(stat = "count")+
+  labs(title = "Methods of commodities selection used in the facilities",
+       x = "Methods of commodity selection",
+       y = "Frequency")
+lscs
+```
+
+
+### 1.4 Respondents opinion about what effective logistics system can achieve:
+
+```{r effective, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = what_effective_log_sys_can_achieve))+
+  geom_bar(stat = "count")+
+  labs(title = "What can effective logistics system achieve?",
+       x = "Opinion",
+       y = "Frequency")
+lscs
+```
+
+### 1.5 Including Plots
+
+Respondents that have ever received logistics training:
+
+```{r pressure1, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = logi_training))+
+  geom_bar(stat = "count")+
+  labs(title = "Respondents that ever received logistics training",
+       x = "Training status",
+       y = "Frequency")
+lscs
+```
+
+## 1.6 Including Plots
+
+Respondents that have ever received logistics training:
+
+```{r pressure2, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = logi_training))+
+  geom_bar(stat = "count")+
+  labs(title = "Respondents that ever received logistics training",
+       x = "Training status",
+       y = "Frequency")
+lscs
+```
+
+## 1.7 Including Plots
+
+Respondents that have ever received logistics training:
+
+```{r pressure3, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = logi_training))+
+  geom_bar(stat = "count")+
+  labs(title = "Respondents that ever received logistics training",
+       x = "Training status",
+       y = "Frequency")
+lscs
+```
+
+## 1.8 Including Plots
+
+Respondents that have ever received logistics training:
+
+```{r pressure4, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = logi_training))+
+  geom_bar(stat = "count")+
+  labs(title = "Respondents that ever received logistics training",
+       x = "Training status",
+       y = "Frequency")
+lscs
+```
+
+## 1.9 Including Plots
+
+Respondents that have ever received logistics training:
+
+```{r pressure5, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = logi_training))+
+  geom_bar(stat = "count")+
+  labs(title = "Respondents that ever received logistics training",
+       x = "Training status",
+       y = "Frequency")
+lscs
+```
+
+## 1.10 Including Plots
+
+Respondents that have ever received logistics training:
+
+```{r pressure6, echo=FALSE, fig.width=8}
+lscs <- cto %>% 
+  ggplot(aes(x = logi_training))+
+  geom_bar(stat = "count")+
+  labs(title = "Respondents that ever received logistics training",
+       x = "Training status",
+       y = "Frequency")
+lscs
+```
